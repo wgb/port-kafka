@@ -1,4 +1,4 @@
-(defproject org.clojars.wgb/port-kafka "0.1.0-SNAPSHOT"
+(defproject org.clojars.wgb/port-kafka "0.1.0"
   :description "Asynchronous Clojure Library for Apache Kafka"
   :url "http://github.com/wgb/port-kafka"
   :license {:name "Eclipse Public License"
