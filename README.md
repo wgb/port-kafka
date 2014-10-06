@@ -4,6 +4,8 @@ An Asynchrous Clojure library for Apache Kafka
 
 Uses [core.async](https://github.com/clojure/core.async) channels, pub/sub, and thread to handle messages for the topics that you want to consume from Kafka. Encodes/decodes message values using [Transit](https://github.com/cognitect/transit-clj).
 
+[![Clojars Project](http://clojars.org/org.clojars.wgb/port-kafka/latest-version.svg)](http://clojars.org/org.clojars.wgb/port-kafka)
+
 ## Usage
 
 The consumer, producer, and messages namespaces are, for the most part, thin wrappers around the Kafka java api.
