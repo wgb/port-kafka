@@ -20,7 +20,7 @@
 (defn create-dog []
   {:dog (rand-int 10000)})
 
-(defn create-cat []
+(defn create-whale []
   {:cat (rand-int 10000)})
 
 (defn create-animal-messages [producer]
@@ -30,12 +30,12 @@
   (doseq [dog (map (fn [d] (m/create-message "dogs" d :json))
                    (take 100 (repeatedly create-dog)))]
     (p/send! producer dog))
-  (doseq [ca (map (fn [cat] (m/create-message "cats" cat :json))
-                  (take 100 (repeatedly create-cat)))]
-    (p/send! producer ca)))
+  (doseq [whale (map (fn [w] (m/create-message "whales" w :json))
+                  (take 100 (repeatedly create-whale)))]
+    (p/send! producer whale)))
 
-(defn cat-handler [message consumer]
-  (println "Got a cat! " message))
+(defn whale-handler [message consumer]
+  (println "Got a whale! " message))
 
 (defn dog-handler [message consumer]
   (println "Got a dog! " message))
@@ -48,15 +48,15 @@
         _ (create-animal-messages producer)
         consumer (c/create consumer-config)
         topic-config {"birds" (int 1)
-                      "cats" (int 1)
+                      "whales" (int 1)
                       "dogs" (int 1)}
         consumer-topic-streams (c/create-topic-streams consumer topic-config)
         topic-handlers {:birds {:handler bird-handler
                                 :buffer {:buffer-type :blocking
                                          :buffer-size 10}}
-                        :cats {:handler cat-handler
-                               :buffer {:buffer-type :blocking
-                                        :buffer-size 10}}
+                        :whales {:handler whale-handler
+                                 :buffer {:buffer-type :blocking
+                                          :buffer-size 10}}
                         :dogs {:handler dog-handler
                                :buffer {:buffer-type :blocking
                                         :buffer-size 10}}}]
